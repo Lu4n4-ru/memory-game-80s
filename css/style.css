@@ -1,0 +1,51 @@
+
+
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 4rem;
+    color: #ff00cc;
+    text-shadow: 2px 2px 0 #000, 4px 4px 0 #00ffff;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    background-color: black;
+}
+#teaser {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    background-color: rgb(219, 233, 25);
+    position: relative;
+    margin-top: 0%;
+    display: inline-flex;
+    align-items: center;
+
+}
+#restart-game {
+    border: 5px solid #00ffff;
+    background-color: hsl(132, 100%, 50%);
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 30px;
+}
+.cards {
+    border: 2px solid black;
+    height: 100px;
+    width: 100px;
+    display: inline-flex;
+    margin: 5px;
+    background: #fff;
+
+}
+#game-board {
+    background-color: aqua;
+    border: 2px solid black;
+    height: 350px;
+    width: 472px;
+    gap: 10px;
+    margin: 0 auto;
+}
+body {
+    background-color:rgb(130, 35, 207);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
