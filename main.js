@@ -18,7 +18,7 @@ const allImages = images.concat(images); //double images
 //make shuffle images
 function shuffle(allImages) {
     for (let i = allImages.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i+1));
+        const j = Math.floor(Math.random() * (i + 1));
         [allImages[i], allImages[j]] = [allImages[j], allImages[i]]
     }
     return allImages;
@@ -43,6 +43,8 @@ cardsOnBoard.forEach(card => {
     card.addEventListener('click', function () {
 
         if (lockBoard) return;
+        if (this.classList.contains('matched')) return;
+        if (flippedCards.includes(this)) return;
         this.style.backgroundImage = `url('${card.dataset.img}')`;
         this.style.backgroundSize = 'cover';
         this.style.backgroundPosition = 'center';
@@ -54,7 +56,7 @@ cardsOnBoard.forEach(card => {
             checkForMatch()
         }
 
-})
+    })
 
 });
 
@@ -75,26 +77,32 @@ cardsOnBoard.forEach(card => {
 
 
 function checkForMatch() {
-    if(flippedCards[0].dataset.alt === flippedCards[1].alt) {
-        //flippedCards[0].add.classList('flipped');
-       // flippedCards[1].add.classList('flipped');
+    if (flippedCards[0].dataset.alt === flippedCards[1].dataset.alt) {
+        flippedCards[0].classList.add('matched');
+        flippedCards[1].classList.add('matched');
         flippedCards = []
 
         //pointCount++ for later maybe
 
-    } else 
-    lockBoard = true;
-    setTimeout (() => {
+    } else {
+        lockBoard = true;
+    setTimeout(() => {
         flippedCards[0].style.backgroundImage = '';
         flippedCards[1].style.backgroundImage = '';
         //flippedCards[0].remove.classList('flipped');
         //flippedCards[1].remove.classList('flipped');
-        lockBoard = false;
+
         flippedCards = [];
+        lockBoard = false;
+    
 
-    }, 1000)
+    }, 1000);
 
+    }
+        
 }
+
+
 
 
 
