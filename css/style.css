@@ -7,6 +7,7 @@ h1 {
     text-shadow: 2px 2px 0 #000, 4px 4px 0 #00ffff;
     letter-spacing: 2px;
     margin-bottom: 20px;
+    margin-top: 5px;
     background-color: black;
 }
 #teaser {
@@ -23,15 +24,15 @@ h1 {
     border: 5px solid #00ffff;
     background-color: hsl(132, 100%, 50%);
     font-family: 'Press Start 2P', cursive;
-    margin-top: 30px;
+    margin-top: 60px;
 }
-.cards {
+.card {
     border: 2px solid black;
     height: 100px;
     width: 100px;
     display: inline-flex;
     margin: 5px;
-    background: #fff;
+    background: purple;
 
 }
 #game-board {
@@ -49,3 +50,6 @@ body {
     align-items: center;
     justify-content: flex-start;
 }
+
+
+
