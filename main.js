@@ -1,6 +1,28 @@
 
+//timer
+let timer;
+let timeLeft = 30;
+let timerElement = document.getElementById('timer')
 
-const cardsOnBoard = document.querySelectorAll('.card'); // sort a node list []
+function startTimer() {
+    timer = setInterval(() => {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+
+        timerElement.innerHTML = `Time Left: ${minutes} : ${seconds < 10 ? "0" : ""} ${seconds}`;
+
+        if (timeLeft <= 0) {
+            
+            clearInterval(timer);
+            gameOver();
+            
+        }
+    }, 1000)
+}
+
+
+const cardsOnBoard = document.querySelectorAll('.card'); // sort a node list [] of all cards in htmlb
 
 const images = [
     { img: './css/images/annie-lennox.jpg', alt: 'Annie Lennox' },
@@ -34,13 +56,22 @@ cardsOnBoard.forEach((cardToDisplay, i) => {
 
 })
 
-let flippedCards = [] //store flipped cards
-let lockBoard = false //avoid clicking more than 2 cards at a time
+let flippedCards = []; //store flipped cards
+let lockBoard = false; //avoid clicking more than 2 cards at a time
 
 //flip on click
 
+let timerStarted = false;
 cardsOnBoard.forEach(card => {
     card.addEventListener('click', function () {
+
+        if (!timerStarted) {
+            startTimer();
+            timerStarted = true;
+        }
+        const clickSound = document.getElementById('click-sound')
+        clickSound.currentTime = 0;
+        clickSound.play();
 
         if (lockBoard) return;
         if (this.classList.contains('matched')) return;
@@ -82,28 +113,98 @@ function checkForMatch() {
         flippedCards[1].classList.add('matched');
         flippedCards = []
 
+        checkForWin();
+
         //pointCount++ for later maybe
 
     } else {
         lockBoard = true;
-    setTimeout(() => {
-        flippedCards[0].style.backgroundImage = '';
-        flippedCards[1].style.backgroundImage = '';
-        //flippedCards[0].remove.classList('flipped');
-        //flippedCards[1].remove.classList('flipped');
+        setTimeout(() => {
+            flippedCards[0].style.backgroundImage = '';
+            flippedCards[1].style.backgroundImage = '';
 
-        flippedCards = [];
-        lockBoard = false;
-    
+            flippedCards = [];
+            lockBoard = false;
 
-    }, 1000);
+
+        }, 1000);
 
     }
-        
+
+}
+/*********************************************** toggle you won button */
+function checkForWin() {
+    const cardFlipped = document.querySelectorAll('.matched');
+
+    if (cardFlipped.length === 12) {
+        wonMessage()
+
+    }
+}
+function wonMessage() {
+    const youWon = document.getElementById('won');
+    youWon.style.display = 'flex'
+
+    const wonSound = document.getElementById('won-sound');
+    wonSound.currentTime = 0;
+    wonSound.play();
+
 }
 
+function gameOver () {
+    if (document.querySelectorAll('.matched').length < 12 && timeLeft === 0) {
+        gameOverMessage()
+
+    }
+}
+
+function gameOverMessage () {
+    const isGameOver = document.getElementById('game-over');
+    isGameOver.style.display = 'flex';
+
+    const gameOverSound = document.getElementById('game-over-sound');
+    gameOverSound.currentTime = 0;
+    gameOverSound.play();
 
 
+}
+//restart button
+
+document.getElementById('restart-game').addEventListener('click', restartGame);
+
+function restartGame() {
+    console.log('Restart function called');
+    timerStarted = false;
+    timeLeft = 30;
+    timerElement.innerHTML = `Time Left: 00 : 30`; //reset timer
+    clearInterval(timer);
+
+    // reset background cards
+    cardsOnBoard.forEach(card => {
+        card.style.backgroundImage = '';
+        card.classList.remove('matched');
+    });
+
+    // variables reset
+    flippedCards = [];
+    lockBoard = false;
+
+    document.getElementById('won').style.display = 'none'; 
+    //display won when restart game(or the button stay visible)
+    document.getElementById('game-over').style.display= 'none';
 
 
+    // new img array to shuffle
+    const newAllImages = images.concat(images);
+    const newShuffledImages = shuffle(newAllImages);
 
+    // reassign shuffled img
+    cardsOnBoard.forEach((card, i) => {
+        if (newShuffledImages[i]) { // controlla che l'immagine esista
+            card.dataset.img = newShuffledImages[i].img;
+            card.dataset.alt = newShuffledImages[i].alt;
+        }
+    });
+
+    console.log('Restart completed');
+}
