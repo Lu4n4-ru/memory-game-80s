@@ -14,7 +14,7 @@ h1 {
     font-family: 'Press Start 2P', cursive;
     font-size: 1rem;
     background-color: rgb(219, 233, 25);
-    border-color: black;
+    border: 2px solid rgb(228, 18, 186);
     position: relative;
     margin-top: 0%;
     display: inline-flex;
@@ -42,18 +42,23 @@ h1 {
     border: 2px solid black;
     height: 100px;
     width: 100px;
-    display: inline-flex;
-    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: purple;
+    flex-shrink: 0;
 
 }
 #game-board {
     background-color: aqua;
     border: 2px solid black;
-    height: 350px;
-    width: 472px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
     margin: 0 auto;
+    padding: 10px;
+    max-width: 460px
 }
 body {
     background-color:rgb(130, 35, 207);
@@ -81,6 +86,7 @@ body {
     border: 5px solid #00ffff;
     background-color: hsl(132, 100%, 50%);
     font-family: 'Press Start 2P', cursive;
+    font-size: 20px;
     /*margin-top: 60px;*/
     position: absolute;
     top: 50%;

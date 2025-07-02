@@ -1,4 +1,3 @@
-
 //timer
 let timer;
 let timeLeft = 30;
