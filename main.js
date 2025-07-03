@@ -20,6 +20,21 @@ function startTimer() {
     }, 1000)
 }
 
+/*function imageShuffled(images) {
+    const newShufImages = [...images];
+    for (let i = newShufImages.length - 1; i--) {
+        const j  = Math.floor(Math.random() * (i + 1));
+        [newShufImages[i], newShufImages[j]] = [newShufImages[j], newShufImages[i]]
+    }
+    return newShufImages
+}
+
+function generateRandomCouples (newShufImages) {
+    const randomImages = imageShuffled(randomImages).slice(0, 8);
+
+    const concatShuffleImg = [...randomImages, ...randomImages]
+}*/
+
 
 const cardsOnBoard = document.querySelectorAll('.card'); // sort a node list [] of all cards in htmlb
 
@@ -55,13 +70,13 @@ function shuffle(allImages) {
     }
     return allImages;
 }
-const shuffledImages = shuffle(allImages)
+const shuffledPosition = shuffle(allImages)
 
 //assign img to the tile
 
 cardsOnBoard.forEach((cardToDisplay, i) => {
-    cardToDisplay.dataset.img = shuffledImages[i].img;
-    cardToDisplay.dataset.alt = shuffledImages[i].alt;
+    cardToDisplay.dataset.img = shuffledPosition[i].img;
+    cardToDisplay.dataset.alt = shuffledPosition[i].alt;
     //cardToDisplay.style.backgroundImage = '';
 
 })
@@ -142,12 +157,13 @@ function checkForMatch() {
     }
 
 }
-/*********************************************** toggle you won button */
+/*********************************************** toggle you won banner */
 function checkForWin() {
     const cardFlipped = document.querySelectorAll('.matched');
 
     if (cardFlipped.length === 16) {
         wonMessage()
+        clearInterval(timer)
 
     }
 }
@@ -164,6 +180,8 @@ function wonMessage() {
 function gameOver () {
     if (document.querySelectorAll('.matched').length < 16 && timeLeft === 0) {
         gameOverMessage()
+        lockBoard = true
+        
 
     }
 }
@@ -205,14 +223,14 @@ function restartGame() {
 
 
     // new img array to shuffle
-    const newAllImages = images.concat(images);
-    const newShuffledImages = shuffle(newAllImages);
+    const newAllPosition = images.concat(images);
+    const newShuffledPosition = shuffle(newAllPosition);
 
     // reassign shuffled img
     cardsOnBoard.forEach((card, i) => {
-        if (newShuffledImages[i]) { // controlla che l'immagine esista
-            card.dataset.img = newShuffledImages[i].img;
-            card.dataset.alt = newShuffledImages[i].alt;
+        if (newShuffledPosition[i]) { // controlla che l'immagine esista
+            card.dataset.img = newShuffledPosition[i].img;
+            card.dataset.alt = newShuffledPosition[i].alt;
         }
     });
 
