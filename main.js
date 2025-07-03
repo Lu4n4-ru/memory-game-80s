@@ -24,30 +24,30 @@ function startTimer() {
 const cardsOnBoard = document.querySelectorAll('.card'); // sort a node list [] of all cards in htmlb
 
 const images = [
-    {img: './css/images/annie-lennox.jpg', alt: 'Annie Lennox', category: 'music'},
-    {img: './css/images/cure.jpg', alt: 'The Cure', category: 'music'},
-    {img: './css/images/david-bowie.jpg', alt: 'David Bowie', category: 'music'},
+ //   {img: './css/images/annie-lennox.jpg', alt: 'Annie Lennox', category: 'music'},
+ //   {img: './css/images/cure.jpg', alt: 'The Cure', category: 'music'},
+ //   {img: './css/images/david-bowie.jpg', alt: 'David Bowie', category: 'music'},
     {img: './css/images/freddie-mercury.jpg', alt: 'Freddie Mercury', category: 'music'},
     {img: './css/images/madonna.jpg', alt: 'Madonna' },
-    {img: './css/images/siouxies.jpg', alt: 'Siouxie and the Banshees', category: 'music'},
-    {img: './css/images/the-smiths.jpg', alt: 'The Smiths', category: 'music' },
+ //   {img: './css/images/siouxies.jpg', alt: 'Siouxie and the Banshees', category: 'music'},
+ //   {img: './css/images/the-smiths.jpg', alt: 'The Smiths', category: 'music' },
     {img: './css/images/ian-curtis.jpg', alt: 'Ian Curtis', category: 'music' },
     {img: './css/images/cobain.jpg', alt: 'Kurt Cobain', category: 'music' },
-    {img: './css/images/bowie-mercury-jackson.jpg', alt: 'Bowie, Jackson, Mercury', category: 'music' },
+//    {img: './css/images/bowie-mercury-jackson.jpg', alt: 'Bowie, Jackson, Mercury', category: 'music' },
     {img: './css/images/mccartney-jackson.jpg', alt: 'McCartney and Jackson', category: 'music' },
-    {img: './css/images/bon-jovi.jpg', alt: 'Jon Bon Jovi', category: 'music'},
-    {img: '.css/images/bowie-d.jpg', alt: 'David Bowie', category: 'music'},
-    {img: './css/images/elton-john.jpg', alt: 'Elton John', category: 'music'},
+ //   {img: './css/images/bon-jovi.jpg', alt: 'Jon Bon Jovi', category: 'music'},
+    {img: './css/images/bowie-d.jpg', alt: 'David Bowie', category: 'music'},
+ //   {img: './css/images/elton-john.jpg', alt: 'Elton John', category: 'music'},
     {img: './css/images/gahan.jpg', alt: 'Dave Gahan', category: 'music'},
-    {img: '.css/images/laine.jpg', alt: 'Alice in Chains - Laine', category: 'music'},
-    {img: '.css/images/Prince.jpg', alt: 'Prince', category: 'music'},
+    {img: './css/images/laine.jpg', alt: 'Alice in Chains - Laine', category: 'music'},
+ //   {img: './css/images/Prince.jpg', alt: 'Prince', category: 'music'},
 ]
 
 const allImages = images.concat(images); //double images
 
 //let cardClicked = [];
 
-//make shuffle images
+//make shuffle images (Fisher-Yates)
 function shuffle(allImages) {
     for (let i = allImages.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
