@@ -1,6 +1,6 @@
 //timer
 let timer;
-let timeLeft = 30;
+let timeLeft = 60;
 let timerElement = document.getElementById('timer')
 
 function startTimer() {
@@ -146,7 +146,7 @@ function checkForMatch() {
 function checkForWin() {
     const cardFlipped = document.querySelectorAll('.matched');
 
-    if (cardFlipped.length === 12) {
+    if (cardFlipped.length === 16) {
         wonMessage()
 
     }
@@ -162,7 +162,7 @@ function wonMessage() {
 }
 
 function gameOver () {
-    if (document.querySelectorAll('.matched').length < 12 && timeLeft === 0) {
+    if (document.querySelectorAll('.matched').length < 16 && timeLeft === 0) {
         gameOverMessage()
 
     }
@@ -185,8 +185,8 @@ document.getElementById('restart-game').addEventListener('click', restartGame);
 function restartGame() {
     console.log('Restart function called');
     timerStarted = false;
-    timeLeft = 30;
-    timerElement.innerHTML = `Time Left: 00 : 30`; //reset timer
+    timeLeft = 60;
+    timerElement.innerHTML = `Time Left: 01 : 00`; //reset timer
     clearInterval(timer);
 
     // reset background cards

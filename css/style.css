@@ -23,8 +23,8 @@ h1 {
 }
 #timer {
     font-family: 'Press Start 2P', cursive;
-    font-size: 1.5rem;
-    text-shadow: 2px 2px 0 #000, 4px 4px 0 #00ffff;
+    font-size: 1rem;
+    text-shadow: 1px 1px 0 #000, 1.5px 1.5px 0 #00ffff;
     background-color: rgb(219, 233, 25);
     border: 2px solid fuchsia;
     position: relative;
