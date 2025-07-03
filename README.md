@@ -16,7 +16,7 @@ Find here the link to play from your laptop or smartphone!
 ## Layout
 Flex and responsive. It's composed of 16 tiles. In this MVP there is no casual image choice, it will be added later on.
 
-## Technical gam tasks 
+## Technical game tasks 
 - Timer countdown
 - When click on 2 images a script match the images via their "alt"
 - if match is ok, images stay visible
@@ -27,4 +27,5 @@ Flex and responsive. It's composed of 16 tiles. In this MVP there is no casual i
 - image position is shuffled at each new start
 - countdown stops as the player matches all the cards
 - if game over, cards are no clickable anymore
+- shuffle random images from a pool
 
