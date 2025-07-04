@@ -118,7 +118,7 @@ window.onload = function () {
     function restartGame() {
         timerStarted = false;
         timeLeft = 45;
-        timerElement.innerHTML = `Time Left: 01 : 00`;
+        timerElement.innerHTML = `Time Left: 00 : 45`;
         clearInterval(timer);
         assignRandomImages();
         flippedCards = [];
