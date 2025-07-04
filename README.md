@@ -5,7 +5,7 @@ Simple Memory game 80s style built with HTML, JS and CSS.
 ## Description
 Click on the tiles to discover the image behind. Images are inspired to music icons of the 80s ;) 
 
-![alt text](image.png)
+![alt text](starting-page-memory.png)
 
 When you click, the time will start the countdown: you have 45 seconds to flip all the cards.
 
