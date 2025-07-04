@@ -1,5 +1,5 @@
 let timer;
-let timeLeft = 60;
+let timeLeft = 45;
 let timerElement = document.getElementById('timer');
 
 const images = [
@@ -37,7 +37,7 @@ window.onload = function () {
     let flippedCards = [];
     let lockBoard = false;
     let timerStarted = false;
-
+//assign random images
     function assignRandomImages() {
         const shuffled = [...images].sort(() => Math.random() - 0.5);
         const selected = shuffled.slice(0, 8);
@@ -117,7 +117,7 @@ window.onload = function () {
 
     function restartGame() {
         timerStarted = false;
-        timeLeft = 60;
+        timeLeft = 45;
         timerElement.innerHTML = `Time Left: 01 : 00`;
         clearInterval(timer);
         assignRandomImages();
